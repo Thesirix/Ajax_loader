@@ -93,6 +93,9 @@
 @endsection
 
 
+
+
+
 @section('scripts')
     <script>
         $(document).ready(function() {
@@ -109,7 +112,8 @@
             data: { phone: phoneNumber }, 
             dataType: "json",
             success: function(response) {
-                  // console.log(response.students);
+                //   console.log(response);
+                //   console.log(response.students);
                 $('tbody').html("");
                 if (response.students.length > 0) {
                     $.each(response.students, function(key, item) {
@@ -147,10 +151,10 @@
                 e.preventDefault();
                 // console.log('work');
                 var data = {
-                    'name': $('.name').val(),
-                    'email': $('.email').val(),
+                    'name': $('.name').val()|| null,
+                    'email': $('.email').val()||null,
                     'phone': $('.phone').val(),
-                    'course': $('.course').val(),
+                    'course': $('.course').val()||null,
                 }
                 // console.log(data);
 
