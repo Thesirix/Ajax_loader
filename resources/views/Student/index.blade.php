@@ -274,16 +274,23 @@ $(this).text("Deleting");
         type: "DELETE",
         url: "/delete-student/"+stud_id,
         
+        
         success: function (response) {
+            
             // console.log(response);
             $('#success_message').addClass('alert alert-success');
             $('#success_message').text(response.message);
             $('#DeleteStudentModal').modal('hide');
             $('.delete_student_btn').text("Yes Delete");
-            console.log(phoneNumber);
+
             
-            fetchstudent(phoneNumber);
-            
+
+            if (phoneNumber) {
+    fetchstudent(phoneNumber);
+} else {
+    $('tbody').html(""); // Vider la table si aucune recherche n'est spécifiée
+    $('#success_message').html('<div class="alert alert-success">Étudiant supprimé.</div>');
+}
         }
     });
 });
